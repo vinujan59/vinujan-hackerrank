@@ -1,0 +1,51 @@
+#include <iostream>
+#include <vector>
+#include <sstream>
+using namespace std;
+void displayPathtoPrincess(int n, vector <string> grid){
+    int mx,my,px,py;
+    for(int i = 0; i < n;i++){
+        stringstream ss(grid[i]);
+        char ch;
+        for(int j = 0; j < n;j++){
+            ss >> ch;
+            if(ch == 'p'){
+                px = i;
+                py = j;
+            }
+            if(ch == 'm'){
+                mx = i;
+                my = j;
+            }
+        }   
+    }
+    if(mx - px < 0){
+        for(int k = 0 ;k < px - mx;k++) cout << "DOWN" << endl;
+    }
+    if(mx - px > 0){
+        for(int l = 0 ;l < mx - px;l++) cout << "UP" << endl;
+    }
+    if(my - py < 0){
+        for(int m = 0 ;m < py - my;m++) cout << "RIGHT" << endl;
+    }
+    if(my - py > 0){
+        for(int n = 0 ;n < my - py;n++) cout << "LEFT" << endl;
+    }
+    
+}
+int main(void) {
+
+    int m;
+    vector <string> grid;
+
+    cin >> m;
+
+    for(int i=0; i<m; i++) {
+        string s; cin >> s;
+        grid.push_back(s);
+    }
+
+    displayPathtoPrincess(m,grid);
+
+    return 0;
+}
